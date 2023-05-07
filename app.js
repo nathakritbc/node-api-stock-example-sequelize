@@ -41,9 +41,6 @@ app.use(cors());
 //Models
 const models = require("./models");
 
-//load passport strategies
-require("./configs/passport/passport")(models);
-
 //Sync Database
 models.sequelize
   .sync()
@@ -53,6 +50,9 @@ models.sequelize
   .catch((err) => {
     console.log(err, "Something went wrong with the Database Update!");
   });
+
+//load passport strategies
+require("./configs/passport/passport")(models);
 
 app.use("/api/auth", authRouter);
 app.use(

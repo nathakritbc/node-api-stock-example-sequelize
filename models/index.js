@@ -1,5 +1,7 @@
 const dbConfig = require("../configs/db.config");
 
+// import associations from "./associations";
+
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -46,5 +48,8 @@ sequelize
 
 db.products = require("./product.model")(sequelize, Sequelize);
 db.users = require("./user.model")(sequelize, Sequelize);
+
+// setting table relationship
+// associations(db);
 
 module.exports = db;
