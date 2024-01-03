@@ -1,24 +1,26 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("users", {
-    user_id: {
+  const Employee = sequelize.define("employees", {
+    employee_id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
-      // field: "user_id",
       primaryKey: true,
       // autoIncrement: true,
       allowNull: false,
     },
-    user_email: {
-      type: Sequelize.STRING(50),
-      isEmail: true,
-      unique: true,
-      allowNull: false,
-    },
-    user_password: {
+    employee_name: {
       type: Sequelize.STRING(),
+      // unique: true,
       allowNull: false,
     },
-    user_status: {
+    employee_position: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    employee_hire_date: {
+      type: Sequelize.DATE,
+      allowNull: false,
+    },
+    employee_status: {
       type: Sequelize.BOOLEAN(),
       // unique: true,
       allowNull: false,
@@ -32,5 +34,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return User;
+  return Employee;
 };

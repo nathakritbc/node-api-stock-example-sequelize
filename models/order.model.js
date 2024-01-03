@@ -1,24 +1,23 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("users", {
-    user_id: {
+  const Order = sequelize.define("orders", {
+    order_id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
-      // field: "user_id",
       primaryKey: true,
       // autoIncrement: true,
       allowNull: false,
     },
-    user_email: {
-      type: Sequelize.STRING(50),
-      isEmail: true,
-      unique: true,
+    order_date: {
+      type: Sequelize.DATE(),
+      // unique: true,
       allowNull: false,
     },
-    user_password: {
-      type: Sequelize.STRING(),
+    order_total_amount: {
+      type: Sequelize.INTEGER(),
+      // unique: true,
       allowNull: false,
     },
-    user_status: {
+    order_payment_status: {
       type: Sequelize.BOOLEAN(),
       // unique: true,
       allowNull: false,
@@ -32,5 +31,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return User;
+  return Order;
 };

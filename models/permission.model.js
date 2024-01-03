@@ -1,24 +1,28 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("users", {
-    user_id: {
+  const Permission = sequelize.define("permissions", {
+    permission_id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
-      // field: "user_id",
       primaryKey: true,
       // autoIncrement: true,
       allowNull: false,
     },
-    user_email: {
-      type: Sequelize.STRING(50),
-      isEmail: true,
-      unique: true,
+    permission_name: {
+      type: Sequelize.STRING(150),
+      // unique: true,
       allowNull: false,
     },
-    user_password: {
-      type: Sequelize.STRING(),
+    permission_modules: {
+      type: Sequelize.TEXT(),
+      // unique: true,
+      // allowNull: false,
+    },
+    permission_description: {
+      type: Sequelize.TEXT(),
+      // unique: true,
       allowNull: false,
     },
-    user_status: {
+    permission_status: {
       type: Sequelize.BOOLEAN(),
       // unique: true,
       allowNull: false,
@@ -32,5 +36,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return User;
+  return Permission;
 };
